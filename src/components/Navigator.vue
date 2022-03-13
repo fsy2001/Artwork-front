@@ -22,7 +22,9 @@
       <el-submenu class="user" index="user">
         <template slot="title"> [username] </template>
         <el-menu-item index="/user-center">{{ $t('user-center') }}</el-menu-item>
-        <el-menu-item index="/shopping-cart">{{ $t('shopping-cart') }}</el-menu-item>
+        <el-badge :value="100" :max="10" class="item">
+          <el-menu-item index="/shopping-cart">{{ $t('shopping-cart') }}</el-menu-item>
+        </el-badge>
         <el-menu-item>{{ $t('logout') }}</el-menu-item>
       </el-submenu>
     </el-menu>

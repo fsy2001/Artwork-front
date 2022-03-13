@@ -4,9 +4,7 @@
     <el-main>
       <router-view/>
     </el-main>
-    <el-footer>
-      这是页面底部
-    </el-footer>
+    <!-- TODO: 页脚 -->
   </div>
 </template>
 

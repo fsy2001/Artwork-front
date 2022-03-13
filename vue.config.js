@@ -8,5 +8,13 @@ module.exports = {
       includeLocales: false,
       enableBridge: true
     }
+  },
+  devServer: {
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:80/',
+        changeOrigin: true
+      },
+    }
   }
 }

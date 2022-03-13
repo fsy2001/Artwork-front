@@ -9,5 +9,29 @@
   "logout": "Logout",
   "language": "Language",
 
-  "home-title": "Website Homepage"
+  "home-title": "Website Homepage",
+
+  "username": "Username",
+  "password": "Password",
+  "confirm-password": "Confirm",
+  "email": "E-mail",
+  "tel": "Tel",
+  "region": "Region",
+  "address": "Address",
+
+  "username-prompt": "input username",
+  "password-prompt": "input password",
+  "confirm-prompt": "repeat password",
+  "email-prompt": "input e-mail",
+  "tel-prompt": "input phone number",
+  "address-prompt": "input detail address",
+  "select-prompt": "select region",
+
+  "invalid-username": "invalid username",
+  "password-conflict": "username conflict with password",
+  "invalid-password": "password too weak",
+  "invalid-confirm": "password not match",
+  "invalid-email": "invalid email",
+  "conflict-username": "Conflict Username"
+
 }

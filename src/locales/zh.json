@@ -9,5 +9,28 @@
   "logout": "退出登录",
   "language": "语言",
 
-  "home-title": "网站主页"
+  "home-title": "网站主页",
+
+  "username": "用户名",
+  "password": "密码",
+  "confirm-password": "确认密码",
+  "email": "邮箱",
+  "tel": "电话",
+  "region": "地区",
+  "address": "地址",
+
+  "username-prompt": "请输入用户名",
+  "password-prompt": "请输入密码",
+  "confirm-prompt": "请重复密码",
+  "email-prompt": "请输入邮箱",
+  "tel-prompt": "请输入电话",
+  "address-prompt": "请输入详细地址",
+  "select-prompt": "请选择",
+
+  "invalid-username": "用户名格式不正确",
+  "password-conflict": "用户名和密码不能一致",
+  "invalid-password": "密码强度不足",
+  "invalid-confirm": "两次密码输入不一致",
+  "invalid-email": "邮箱格式不正确",
+  "conflict-username": "用户名冲突"
 }
