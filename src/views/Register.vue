@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import {regionData, CodeToText} from 'element-china-area-data'
+import {CodeToText, regionData} from 'element-china-area-data'
 import router from "@/router";
 
 export default {
@@ -110,7 +110,6 @@ export default {
           {
             required: true,
             trigger: 'blur',
-            pattern: /^[a-zA-Z0-9.! #$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/,
             message: this.$i18n.t('invalid-email')
           }
         ]
@@ -137,7 +136,7 @@ export default {
       else
         return 'success'
     },
-    submit: function() {
+    submit: function () {
       let userObj = {
         username: this.form.username,
         password: this.form.password,
@@ -164,7 +163,8 @@ export default {
             return response
           })
           .then(res => {
-            return res.json()
+            if (!this.success)
+              return res.json()
           })
           .then(data => {
             if (!this.success) {

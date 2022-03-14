@@ -32,6 +32,11 @@
   "invalid-password": "password too weak",
   "invalid-confirm": "password not match",
   "invalid-email": "invalid email",
-  "conflict-username": "Conflict Username"
+  "conflict-username": "Conflict Username",
 
+  "login-fail": "Incorrect username or password",
+  "account-banned": "Account Banned",
+  "unknown-error": "Unknown error",
+  "login-complete": "Enter username and password",
+  "network-error": "Internet jam, try again later"
 }
