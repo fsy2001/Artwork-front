@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from "@/views/Register";
 import Login from "@/views/Login";
+import ArtworkDetail from "@/views/ArtworkDetail";
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
         name: 'Login',
         component: Login
     },
+    {
+        path: '/artwork/:id',
+        name: 'ArtworkDetail',
+        component: ArtworkDetail
+    }
 ]
 
 const router = new VueRouter({

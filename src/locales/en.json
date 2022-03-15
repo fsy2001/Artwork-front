@@ -38,5 +38,23 @@
   "account-banned": "Account Banned",
   "unknown-error": "Unknown error",
   "login-complete": "Enter username and password",
-  "network-error": "Internet jam, try again later"
+  "network-error": "Internet jam, try again later",
+
+  "artwork-not-exist": "Artwork not exist",
+  "artwork-detail": "Artwork detail",
+  "author": "Author",
+  "price": "Price",
+  "views": "Views",
+  "year": "Year",
+  "size": "Dimension",
+  "era": "Era",
+  "genre": "Genre",
+  "sold": "Sold",
+  "true": "Yes",
+  "false": "No",
+  "add-to-cart": "Add to cart",
+  "cart-item-added": "Cart item added",
+  "item-already-added": "Item already added",
+
+  "trending": "Trending"
 }

@@ -1,8 +1,8 @@
 <template>
-  <div class="login">
-    <el-card class="login-box">
-      <div slot="header" class="login-title-box">
-        <h1 class="login-title">
+  <div class="page">
+    <el-card class="pgae-box">
+      <div slot="header" class="page-title-box">
+        <h1 class="page-title">
           {{ $t('login') }}
         </h1>
       </div>
@@ -40,6 +40,8 @@ export default {
         return
       }
 
+      // TODO: 检查邮箱登录
+
       // 发送网络请求
       fetch('/api/login?' + new URLSearchParams({
         username: this.username,
@@ -72,25 +74,7 @@ export default {
 </script>
 
 <style scoped>
-.login {
-  display: flex;
-  justify-content: center;
-}
 
-.login-box {
-  width: 500px;
-  margin-top: 30px;
-  padding: 40px;
-}
-
-.login-title-box {
-  display: flex;
-  justify-content: center;
-}
-
-.login-title {
-  margin: 0;
-}
 
 .login-input {
   width: 80%;

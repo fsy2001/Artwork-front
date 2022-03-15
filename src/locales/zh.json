@@ -38,5 +38,23 @@
   "account-banned": "帐户被禁用",
   "unknown-error": "未知错误",
   "login-complete": "请输入用户名和密码",
-  "network-error": "网络错误，请稍后再试"
+  "network-error": "网络错误，请稍后再试",
+
+  "artwork-not-exist": "锁清秋的艺术品不存在",
+  "artwork-detail": "详细信息",
+  "author": "作者",
+  "price": "价格",
+  "views": "访问量",
+  "year": "年份",
+  "size": "尺寸",
+  "era": "年代",
+  "genre": "风格",
+  "sold": "已售出",
+  "true": "是",
+  "false": "否",
+  "add-to-cart": "加入购物车",
+  "cart-item-added": "已加入购物车",
+  "item-already-added": "购物车中已存在此商品",
+
+  "trending": "热门商品"
 }

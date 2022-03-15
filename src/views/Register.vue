@@ -1,8 +1,8 @@
 <template>
-  <div class="register">
-    <el-card class="register-box">
-      <div slot="header" class="register-title-box">
-        <h1 class="register-title">
+  <div class="page">
+    <el-card class="page-box">
+      <div slot="header" class="page-title-box">
+        <h1 class="page-title">
           {{ $t('register') }}
         </h1>
       </div>
@@ -118,7 +118,7 @@ export default {
   },
   computed: {},
   methods: {
-    passwordStrength: function (password) {
+    passwordStrength: function (password) { // 检查密码强度
       let passwordLength = password.length
       if (passwordLength < 6)
         return 30
@@ -127,7 +127,7 @@ export default {
       else
         return 100
     },
-    passwordStatus: function (password) {
+    passwordStatus: function (password) { // 检查密码强度
       let passwordLength = password.length
       if (passwordLength < 6)
         return 'exception'
@@ -137,6 +137,9 @@ export default {
         return 'success'
     },
     submit: function () {
+      // TODO: 检查是否填写完整
+
+
       let userObj = {
         username: this.form.username,
         password: this.form.password,
@@ -178,24 +181,11 @@ export default {
 
 <style scoped>
 
-.register {
-  display: flex;
-  justify-content: center;
-}
 
-.register-box {
+.page-box {
   width: 500px;
   margin-top: 30px;
   padding: 40px;
-}
-
-.register-title-box {
-  display: flex;
-  justify-content: center;
-}
-
-.register-title {
-  margin: 0;
 }
 
 </style>

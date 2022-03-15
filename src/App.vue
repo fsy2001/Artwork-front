@@ -29,4 +29,25 @@ body {
 }
 
 
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.pgae-box {
+  width: 500px;
+  margin-top: 30px;
+  padding: 40px;
+}
+
+.page-title-box {
+  display: flex;
+  justify-content: center;
+}
+
+.page-title {
+  margin: 0;
+}
+
+
 </style>
