@@ -54,7 +54,38 @@
   "false": "否",
   "add-to-cart": "加入购物车",
   "cart-item-added": "已加入购物车",
+  "cart-item-deleted": "已从购物车中删除",
   "item-already-added": "购物车中已存在此商品",
 
-  "trending": "热门商品"
+  "trending": "热门商品",
+
+  "user-detail": "用户信息",
+  "balance": "余额",
+  "province": "省",
+  "city": "市",
+  "district": "区",
+  "address-detail": "详细地址",
+  "edit-avatar": "编辑头像",
+  "recharge": "充值",
+  "recharge-amount": "充值金额",
+  "recharge-success": "充值成功",
+
+  "friend": "好友",
+  "new-friends": "添加好友",
+  "friend-apply": "好友申请",
+  "new-friend-prompt": "请输入拟添加好友的用户名",
+  "action": "操作",
+  "approve": "通过",
+  "approved": "已通过好友申请",
+  "user-not-exist": "用户不存在",
+  "duplicate-application": "重复申请",
+  "application-not-exist": "申请不存在",
+  "application-already-approved": "申请已批准",
+
+
+  "send": "发送",
+  "apply-sent": "申请已发送",
+  "chat": "私信",
+  "order": "订单",
+  "cancel": "取消"
 }

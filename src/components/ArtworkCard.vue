@@ -27,7 +27,22 @@ export default {
   props: ['artwork', 'cart'],
   methods: {
     removeFromCart: function () {
-
+      fetch('/api/cart/del/' + this.artwork.id, {
+        method: 'DELETE'
+      })
+          .then(res => {
+            this.success = res.ok
+            if (!res.ok)
+              return res.json()
+          })
+          .then(data => {
+            if (this.success) { // 删除成功
+              this.$alert(this.$i18n.t('cart-item-deleted'))
+              this.$store.commit('cart') // 刷新购物车
+            } else { // 发生错误
+              this.$alert(this.$i18n.t(data.message))
+            }
+          })
     }
   }
 }

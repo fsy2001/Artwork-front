@@ -108,6 +108,7 @@ export default {
         ],
         email: [
           {
+            // TODO: 邮箱验证正则
             required: true,
             trigger: 'blur',
             message: this.$i18n.t('invalid-email')
@@ -179,13 +180,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-
-.page-box {
-  width: 500px;
-  margin-top: 30px;
-  padding: 40px;
-}
-
-</style>

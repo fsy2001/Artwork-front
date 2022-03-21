@@ -54,7 +54,38 @@
   "false": "No",
   "add-to-cart": "Add to cart",
   "cart-item-added": "Cart item added",
+  "cart-item-deleted": "Cart item deleted",
   "item-already-added": "Item already added",
 
-  "trending": "Trending"
+  "trending": "Trending",
+
+  "user-detail": "Account info",
+  "balance": "Balance",
+  "province": "Province",
+  "city": "City",
+  "district": "District",
+  "address-detail": "Address detail",
+  "edit-avatar": "Edit avatar",
+  "recharge": "Recharge",
+  "recharge-amount": "Recharge amount",
+  "recharge-success": "Recharge success",
+
+  "friend": "Friends",
+  "new-friends": "New friend",
+  "friend-apply": "Applications",
+  "apply-sent": "Apply sent",
+  "new-friend-prompt": "input username of friend",
+  "action": "Action",
+  "approve": "Approve",
+  "approved": "Friend application approved",
+  "user-not-exist": "User not exist",
+  "duplicate-application": "Duplicate application",
+  "application-not-exist": "Application not exist",
+  "application-already-approved": "Application already approved",
+
+
+  "send": "Send",
+  "chat": "Chat",
+  "order": "Orders",
+  "cancel": "Cancel"
 }

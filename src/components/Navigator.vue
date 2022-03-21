@@ -18,23 +18,34 @@
 
       <el-menu-item v-if="!$store.state.login" class="user" index="/login">{{ $t('login') }}</el-menu-item>
       <el-menu-item v-if="!$store.state.login" class="user" index="/register">{{ $t('register') }}</el-menu-item>
+
+
       <el-submenu v-if="$store.state.login" class="user" index="user">
         <template slot="title"> {{ $store.state.user.username }}</template>
+
         <el-menu-item index="/user-center">{{ $t('user-center') }}</el-menu-item>
-        <el-badge :value="100" :max="10" class="item">
-          <el-menu-item index="/shopping-cart">{{ $t('shopping-cart') }}</el-menu-item>
+        <el-badge :hidden="$store.state.cart.length === 0" :value="$store.state.cart.length" :max="10" class="item">
+          <el-popover placement="left" width="460" trigger="hover">
+            <ArtworkCard v-for="artwork in $store.state.cart" :key="artwork.id" :artwork="artwork" :cart="true"/>
+            <el-menu-item slot="reference" index="/shopping-cart">{{ $t('shopping-cart') }}</el-menu-item>
+          </el-popover>
         </el-badge>
         <el-menu-item @click="logout">{{ $t('logout') }}</el-menu-item>
       </el-submenu>
+
+
     </el-menu>
   </el-header>
 </template>
 
 <script>
+import ArtworkCard from "@/components/ArtworkCard";
 import i18n from "@/i18n";
+import router from "@/router";
 
 export default {
   name: "Navigator",
+  components: {ArtworkCard},
   methods: {
     switchLang(lang) { // 切换全局语言
       i18n.locale = lang
@@ -44,6 +55,7 @@ export default {
         method: 'POST'
       })
       this.$store.commit('logout') // 设置全局状态
+      router.push({name: 'Home'})
     }
   }
 }

@@ -34,7 +34,7 @@ body {
   justify-content: center;
 }
 
-.pgae-box {
+.page-box {
   width: 500px;
   margin-top: 30px;
   padding: 40px;

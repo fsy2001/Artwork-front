@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Register from "@/views/Register";
 import Login from "@/views/Login";
 import ArtworkDetail from "@/views/ArtworkDetail";
+import UserCenter from "@/views/UserCenter";
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
         path: '/artwork/:id',
         name: 'ArtworkDetail',
         component: ArtworkDetail
+    },
+    {
+        path: '/user-center',
+        name: 'UserCenter',
+        component: UserCenter
     }
 ]
 

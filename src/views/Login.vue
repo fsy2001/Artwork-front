@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <el-card class="pgae-box">
+    <el-card class="page-box">
       <div slot="header" class="page-title-box">
         <h1 class="page-title">
           {{ $t('login') }}
@@ -59,6 +59,7 @@ export default {
           .then(data => {
             if (this.success) { // 登录成功
               this.$store.commit('login', data.user) // 修改全局状态
+              this.$store.commit('cart') // 刷新购物车
               router.push({name: 'Home'}) // 跳转到主页
             } else { // 登录失败
               this.$alert(this.$i18n.t(data.message))

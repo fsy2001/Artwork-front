@@ -42,12 +42,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-.page-box {
-  width: 500px;
-  margin-top: 30px;
-  padding: 40px;
-}
-
-</style>

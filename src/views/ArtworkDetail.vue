@@ -91,27 +91,18 @@ export default {
           .then(data => {
             if (this.success) { // 添加成功
               this.$alert(this.$i18n.t('cart-item-added'))
-              this.refreshCart()
+              this.$store.commit('cart') // 刷新购物车
             } else { // 发生错误
               this.$alert(this.$i18n.t(data.message))
             }
           })
     },
-    refreshCart: function () { // TODO: 刷新购物车数据
-
-    }
   }
 }
 </script>
 
 
 <style scoped>
-
-.page-box {
-  width: 500px;
-  margin-top: 30px;
-  padding: 40px;
-}
 
 .artwork-image {
   width: 100%;
