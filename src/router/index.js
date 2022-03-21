@@ -5,6 +5,7 @@ import Register from "@/views/Register";
 import Login from "@/views/Login";
 import ArtworkDetail from "@/views/ArtworkDetail";
 import UserCenter from "@/views/UserCenter";
+import Search from "@/views/Search";
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: Login
+    },
+    {
+        path: '/search',
+        name: 'Search',
+        component: Search
     },
     {
         path: '/artwork/:id',

@@ -42,6 +42,7 @@
 
   "artwork-not-exist": "Artwork not exist",
   "artwork-detail": "Artwork detail",
+  "title": "Title",
   "author": "Author",
   "price": "Price",
   "views": "Views",
@@ -83,9 +84,12 @@
   "application-not-exist": "Application not exist",
   "application-already-approved": "Application already approved",
 
-
   "send": "Send",
   "chat": "Chat",
   "order": "Orders",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+
+  "search-content-prompt": "input search content",
+  "by-title": "By title",
+  "by-author": "By author"
 }

@@ -42,6 +42,7 @@
 
   "artwork-not-exist": "锁清秋的艺术品不存在",
   "artwork-detail": "详细信息",
+  "title": "标题",
   "author": "作者",
   "price": "价格",
   "views": "访问量",
@@ -82,10 +83,13 @@
   "application-not-exist": "申请不存在",
   "application-already-approved": "申请已批准",
 
-
   "send": "发送",
   "apply-sent": "申请已发送",
   "chat": "私信",
   "order": "订单",
-  "cancel": "取消"
+  "cancel": "取消",
+
+  "search-content-prompt": "请输入搜索内容",
+  "by-title": "按标题",
+  "by-author": "按作者"
 }
