@@ -74,7 +74,7 @@
       <el-collapse>
         <!--  我的好友   -->
         <el-collapse-item :title="$t('friend')">
-          <el-table :data="friends" height="250" stripe>
+          <el-table :data="friends" stripe>
             <el-table-column :label="$t('username')">
               <template slot-scope="scope">
                 <div class="user-title">
@@ -186,7 +186,8 @@ export default {
             return response
           })
           .then(res => {
-            return res.json()
+            if (!this.success)
+              return res.json()
           })
           .then(data => {
             if (this.success) {
