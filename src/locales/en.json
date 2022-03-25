@@ -84,6 +84,10 @@
   "application-not-exist": "Application not exist",
   "application-already-approved": "Application already approved",
 
+  "message": "Message",
+  "message-prompt": "input message to send",
+  "message-sent": "Message sent",
+
   "send": "Send",
   "chat": "Chat",
   "order": "Orders",

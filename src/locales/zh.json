@@ -83,6 +83,10 @@
   "application-not-exist": "申请不存在",
   "application-already-approved": "申请已批准",
 
+  "message": "消息",
+  "message-prompt": "输入消息内容",
+  "message-sent": "私信已发送",
+
   "send": "发送",
   "apply-sent": "申请已发送",
   "chat": "私信",

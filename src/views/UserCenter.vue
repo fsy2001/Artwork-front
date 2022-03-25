@@ -91,8 +91,11 @@
                 </el-button>
               </template>
 
-              <template><!--  TODO: 加slot-scope="scope'，私信功能  -->
-                <el-button type="text">
+              <template slot-scope="scope">
+                <el-button @click="fetchMessage(scope.row.username);
+                visible.message = true;
+                messageTo = scope.row.username"
+                           type="text">
                   <i class="el-icon-chat-dot-round"></i>
                   {{ $t('chat') }}
                 </el-button>
@@ -152,23 +155,43 @@
         </el-table-column>
       </el-table>
     </el-dialog>
+
+    <!--  私信面板  -->
+    <el-dialog :title="$t('chat')" :visible.sync="visible.message">
+      <Message :message="message" :key="message.id" v-for="message in messageList"></Message>
+      <el-form :inline="true">
+        <el-form-item :label="$t('message')">
+          <el-input v-model="messageContent" :placeholder="$t('message-prompt')"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click="sendMessage" type="primary">{{$t('send')}}</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import Message from "@/components/Message";
 
 export default {
   name: "UserCenter",
+  components: {Message},
+
   data() {
     return {
       user: this.$store.state.user,
       friends: [],
       applications: [],
+      messageList: [],
+      messageTo: '',
+      messageContent: '',
       visible: {
         avatar: false,
         recharge: false,
         newFriends: false,
         friendApply: false,
+        message: false,
       },
       rechargeValue: 0,
       newFriendName: ""
@@ -286,6 +309,47 @@ export default {
           })
       this.fetchFriends()
       this.fetchApplications()
+    },
+    fetchMessage: function (username) {
+      fetch('/api/message?' + new URLSearchParams({friend: username}))
+          .then(res => {
+            this.success = res.ok
+            return res.json()
+          })
+          .then(data => {
+            if (this.success)
+              this.messageList = data
+            else
+              this.$alert(this.$i18n.t(data.message))
+          })
+    },
+    sendMessage: function () {
+      fetch('/api/message?' + new URLSearchParams({
+        friend: this.messageTo
+      }), {
+        method: 'POST',
+        body: this.messageContent
+      })
+          .then(response => {
+            this.success = response.ok
+            return response
+          })
+          .then(res => {
+            if (!this.success)
+              return res.json()
+          })
+          .then(data => {
+            if (this.success) {
+              this.$alert(this.$i18n.t('message-sent'))
+              this.fetchMessage(this.messageTo) // 刷新私信列表
+            } else {
+              this.$alert(this.$i18n.t(data.message))
+            }
+          })
+          .catch(error => {
+            console.log(error)
+            this.$alert(this.$i18n.t('network-error'))
+          })
     }
   },
   mounted() {

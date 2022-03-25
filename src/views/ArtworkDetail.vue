@@ -19,7 +19,7 @@
         </template>
 
         <el-descriptions-item :label="$t('sold')">
-          {{ artwork.sold ? $t('true') : $t('false') }}`
+          {{ artwork.sold ? $t('true') : $t('false') }}
         </el-descriptions-item>
         <el-descriptions-item :label="$t('price')">{{ artwork.price }}</el-descriptions-item>
         <el-descriptions-item :label="$t('views')">{{ artwork.view }}</el-descriptions-item>
