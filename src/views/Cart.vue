@@ -13,7 +13,7 @@
       <ArtworkCard v-for="artwork in $store.state.cart" :key="artwork.id" :artwork="artwork" :cart="true"/>
 
       <div class="cart-center">
-        <el-button type="primary" @click="visibleOrderPanel = true">{{ $t('clear-cart') }}</el-button>
+        <el-button type="primary" @click="showPanel">{{ $t('clear-cart') }}</el-button>
       </div>
     </el-card>
 
@@ -130,6 +130,12 @@ export default {
       await new Promise(r => setTimeout(r, 200)); // 等待
       this.$store.commit('cart') // 刷新购物车
     },
+    showPanel: function () {
+      if (this.$store.state.cart.length !== 0)
+        this.visibleOrderPanel = true
+      else
+        this.$alert(this.$t('empty-cart'))
+    }
   },
 }
 </script>
