@@ -18,6 +18,7 @@
         {{ $t('price') }}：{{ artwork.price }}
       </p>
     </div>
+    <span class="sold-text" v-if="cart && artwork.sold">{{ $t('sold') }}</span>
   </el-card>
 </template>
 
@@ -56,6 +57,7 @@ export default {
   display: flex;
   flex-direction: row;
   margin-top: 25px;
+  position: relative;
 }
 
 .art-card-img {
@@ -86,6 +88,15 @@ export default {
 .art-card-text {
   color: #999;
   font-size: 13px;
+}
+
+.sold-text {
+  margin-left: 30px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #C0C4CC;
+  font-weight: bold;
 }
 
 </style>

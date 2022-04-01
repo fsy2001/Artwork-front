@@ -27,7 +27,7 @@
         <el-badge :hidden="$store.state.cart.length === 0" :value="$store.state.cart.length" :max="10" class="item">
           <el-popover placement="left" width="460" trigger="hover">
             <ArtworkCard v-for="artwork in $store.state.cart" :key="artwork.id" :artwork="artwork" :cart="true"/>
-            <el-menu-item slot="reference" index="/shopping-cart">{{ $t('shopping-cart') }}</el-menu-item>
+            <el-menu-item slot="reference" index="/cart">{{ $t('shopping-cart') }}</el-menu-item>
           </el-popover>
         </el-badge>
         <el-menu-item @click="logout">{{ $t('logout') }}</el-menu-item>

@@ -6,6 +6,7 @@ import Login from "@/views/Login";
 import ArtworkDetail from "@/views/ArtworkDetail";
 import UserCenter from "@/views/UserCenter";
 import Search from "@/views/Search";
+import Cart from "@/views/Cart";
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
         path: '/user-center',
         name: 'UserCenter',
         component: UserCenter
+    },
+    {
+        path: '/cart',
+        name: 'Cart',
+        component: Cart
     }
 ]
 

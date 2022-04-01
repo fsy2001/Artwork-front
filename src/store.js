@@ -38,8 +38,6 @@ export default new Vuex.Store({
                 .then(data => {
                     state.cart = data
                 })
-
-            console.log(state)
         }
     },
     actions: {}
