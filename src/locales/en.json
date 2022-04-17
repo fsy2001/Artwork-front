@@ -97,5 +97,7 @@
   "canceled": "Canceled",
   "confirm-delivered": "Confirm delivered",
   "confirmed": "Confirmed",
-  "paid": "Paid"
+  "paid": "Paid",
+
+  "require-login": "Require login"
 }

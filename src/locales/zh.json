@@ -111,5 +111,7 @@
   "canceled": "已取消",
   "confirm-delivered": "确认送达",
   "confirmed": "已确认送达",
-  "paid": "已付款"
+  "paid": "已付款",
+
+  "require-login": "需要登录"
 }

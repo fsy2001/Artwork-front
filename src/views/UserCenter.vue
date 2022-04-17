@@ -197,6 +197,7 @@
 import Message from "@/components/Message";
 import OrderCard from "@/components/OrderCard";
 import ArtworkCard from "@/components/ArtworkCard";
+import router from "@/router";
 
 export default {
   name: "UserCenter",
@@ -418,6 +419,12 @@ export default {
     }
   },
   mounted() {
+    if (!this.$store.state.login) {
+      this.$alert(this.$t('require-login'))
+      router.push({name: 'Login'})
+      return
+    }
+
     this.fetchFriends()
     this.$store.commit('refresh')
   }

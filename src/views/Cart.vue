@@ -84,6 +84,7 @@
 
 <script>
 import ArtworkCard from "@/components/ArtworkCard";
+import router from "@/router";
 
 export default {
   name: "Cart",
@@ -98,6 +99,12 @@ export default {
       let sum = 0
       this.$store.state.cart.forEach(cart => {sum += cart.price})
       return sum
+    }
+  },
+  mounted() {
+    if (!this.$store.state.login) {
+      this.$alert(this.$t('require-login'))
+      router.push({name: 'Login'})
     }
   },
   methods: {
