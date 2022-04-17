@@ -4,7 +4,6 @@
     <el-main>
       <router-view/>
     </el-main>
-    <!-- TODO: 页脚 -->
   </div>
 </template>
 
@@ -18,8 +17,13 @@ export default {
 
 <style lang="scss">
 
+.el-main {
+  padding: 0 !important;
+}
+
 html {
   height: 100%;
+  margin: 0;
 }
 
 body {
@@ -30,6 +34,7 @@ body {
 
 
 .page {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
