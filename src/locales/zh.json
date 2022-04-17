@@ -113,5 +113,7 @@
   "confirmed": "已确认送达",
   "paid": "已付款",
 
-  "require-login": "需要登录"
+  "require-login": "需要登录",
+
+  "chatroom": "在线聊天室"
 }

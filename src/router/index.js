@@ -7,6 +7,7 @@ import ArtworkDetail from "@/views/ArtworkDetail";
 import UserCenter from "@/views/UserCenter";
 import Search from "@/views/Search";
 import Cart from "@/views/Cart";
+import Chat from "@/views/Chat";
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
         path: '/cart',
         name: 'Cart',
         component: Cart
+    },
+    {
+        path: '/chat',
+        name: 'Chat',
+        component: Chat
     }
 ]
 

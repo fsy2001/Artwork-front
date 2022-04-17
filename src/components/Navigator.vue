@@ -30,6 +30,7 @@
             <el-menu-item slot="reference" index="/cart">{{ $t('shopping-cart') }}</el-menu-item>
           </el-popover>
         </el-badge>
+        <el-menu-item index="/chat">{{ $t('chatroom') }}</el-menu-item>
         <el-menu-item @click="logout">{{ $t('logout') }}</el-menu-item>
       </el-submenu>
 

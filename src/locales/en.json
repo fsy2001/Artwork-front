@@ -99,5 +99,6 @@
   "confirmed": "Confirmed",
   "paid": "Paid",
 
-  "require-login": "Require login"
+  "require-login": "Require login",
+  "chatroom": "Chatroom"
 }

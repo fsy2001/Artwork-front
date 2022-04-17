@@ -77,7 +77,6 @@ export default {
 
 <style scoped>
 
-
 .login-input {
   width: 80%;
 }
