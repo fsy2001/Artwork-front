@@ -105,5 +105,11 @@
   "not-enough-balance": "余额不足",
   "place-order": "下订单",
   "order-detail": "订单信息",
-  "total-price": "总价"
+  "total-price": "总价",
+
+  "recent-view": "最近浏览",
+  "canceled": "已取消",
+  "confirm-delivered": "确认送达",
+  "confirmed": "已确认送达",
+  "paid": "已付款"
 }

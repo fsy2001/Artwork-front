@@ -77,6 +77,8 @@ export default {
           else
             this.$alert(this.$i18n.t(data.message))
         })
+    if (this.$store.state.login)
+      this.$store.commit('history') // 刷新浏览历史记录
   },
   methods: {
     addToCart: function () { // 添加购物车

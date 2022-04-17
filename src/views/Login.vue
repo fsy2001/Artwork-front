@@ -29,6 +29,7 @@ export default {
   name: "Login",
   data() {
     return {
+      // TODO: 交付时删掉这个
       username: "fsy2001",
       password: "password"
     }
@@ -39,8 +40,6 @@ export default {
         this.$alert(this.$i18n.t('login-complete'))
         return
       }
-
-      // TODO: 检查邮箱登录
 
       // 发送网络请求
       fetch('/api/login?' + new URLSearchParams({
@@ -60,6 +59,8 @@ export default {
             if (this.success) { // 登录成功
               this.$store.commit('login', data.user) // 修改全局状态
               this.$store.commit('cart') // 刷新购物车
+              this.$store.commit('order') // 获取订单
+              this.$store.commit('history') // 获取浏览记录
               router.push({name: 'Home'}) // 跳转到主页
             } else { // 登录失败
               this.$alert(this.$i18n.t(data.message))

@@ -103,14 +103,22 @@
             </el-table-column>
           </el-table>
         </el-collapse-item>
-        <!--   TODO: 我的订单    -->
-        <el-collapse-item :title="$t('order')">
 
+        <!--  我的订单   -->
+        <el-collapse-item :title="$t('order')">
+          <OrderCard v-for="order in $store.state.orders" :key="order.id" :order="order">
+            <el-button v-if="order.status === 'paid'" @click="expandDetailPanel(order.id)" type="text"
+                       style="float: right">
+              <i class="el-icon-info"></i>
+            </el-button>
+          </OrderCard>
         </el-collapse-item>
 
+        <!--  最近浏览  -->
+        <el-collapse-item :title="$t('recent-view')">
+          <ArtworkCard v-for="artwork in $store.state.viewHistory" :key="artwork.id" :artwork="artwork" :cart="false"/>
+        </el-collapse-item>
       </el-collapse>
-
-
     </el-card>
 
     <!--  改头像面板  -->
@@ -164,19 +172,35 @@
           <el-input v-model="messageContent" :placeholder="$t('message-prompt')"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button @click="sendMessage" type="primary">{{$t('send')}}</el-button>
+          <el-button @click="sendMessage" type="primary">{{ $t('send') }}</el-button>
         </el-form-item>
       </el-form>
+    </el-dialog>
+
+    <!--  订单详情面板  -->
+    <el-dialog :title="$t('order-detail')" :visible.sync="visible.orderDetail">
+      <!--  时间线  -->
+      <el-timeline>
+        <el-timeline-item v-for="(step, index) in deliveryStatus"
+                          :key="index"
+                          :color="step.color">
+          {{ step.content }}
+        </el-timeline-item>
+
+      </el-timeline>
+      <el-button type="primary" @click="confirmDelivered">{{ $t('confirm-delivered') }}</el-button>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import Message from "@/components/Message";
+import OrderCard from "@/components/OrderCard";
+import ArtworkCard from "@/components/ArtworkCard";
 
 export default {
   name: "UserCenter",
-  components: {Message},
+  components: {ArtworkCard, Message, OrderCard},
 
   data() {
     return {
@@ -192,9 +216,29 @@ export default {
         newFriends: false,
         friendApply: false,
         message: false,
+        orderDetail: false
       },
       rechargeValue: 0,
-      newFriendName: ""
+      newFriendName: "",
+    }
+  },
+  computed: {
+    deliveryStatus: function () {
+      let step = this.$store.state.activeOrder.shippingStatus
+      let user = this.$store.state.user
+      let arr = [
+        {content: user.addressProvince},
+        {content: user.addressCity},
+        {content: user.addressDistrict},
+        {content: user.addressDetail}
+      ]
+
+      for (let i = 1; i <= 4; i++) {
+        if (i <= step)
+          arr[i - 1].color = '#0bbd87'
+      }
+
+      return arr
     }
   },
   methods: {
@@ -349,6 +393,27 @@ export default {
           .catch(error => {
             console.log(error)
             this.$alert(this.$i18n.t('network-error'))
+          })
+    },
+    expandDetailPanel: function (id) {
+      this.$store.commit('active', id)
+      this.$emit('order-detail')
+      this.visible.orderDetail = true
+    },
+    confirmDelivered: function () {
+      let id = this.$store.state.activeOrderId
+
+      fetch('/api/order/confirm?' + new URLSearchParams({order: id}),
+          {method: 'POST'})
+          .then(res => {
+            this.success = res.ok
+            return res.json()
+          })
+          .then(data => {
+            if (this.success)
+              this.$alert(this.$t('confirmed'))
+            else
+              this.$alert(this.$t(data.message))
           })
     }
   },
