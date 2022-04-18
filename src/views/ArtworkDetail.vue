@@ -7,7 +7,14 @@
         </h1>
       </div>
 
-      <el-image class="artwork-image" fit="fill" :src="artwork.imgPath"></el-image>
+      <el-image class="artwork-image" fit="cover" :src="artwork.imgPath"
+                @mouseenter="enhanceVisible = true"
+                @mousemove="enhance"
+                @mouseleave="enhanceVisible = false">
+      </el-image>
+
+      <!--   悬浮放大窗口   -->
+      <div class="enhance-hover-box" v-show="enhanceVisible" :style="positionObject"></div>
 
       <el-descriptions :title="$t('artwork-detail')" border>
 
@@ -34,12 +41,8 @@
 
         <el-descriptions-item :label="$t('year')">{{ artwork.detailYear }}</el-descriptions-item>
         <el-descriptions-item :label="$t('size')">{{ artwork.detailSize }}</el-descriptions-item>
-
       </el-descriptions>
-
     </el-card>
-
-
   </div>
 </template>
 
@@ -61,6 +64,13 @@ export default {
         detailSize: "",
         detailGenre: "",
         detailEra: ""
+      },
+      enhanceVisible: false,
+      positionObject: {
+        top: '0px',
+        left: '0px',
+        backgroundImage: '',
+        backgroundPosition: '0px 0px'
       }
     }
   },
@@ -72,13 +82,15 @@ export default {
           return res.json()
         })
         .then(data => {
-          if (this.success)
+          if (this.success) {
             this.artwork = data
-          else
+            this.positionObject.backgroundImage = `url(${this.artwork.imgPath})` // 设置放大 div 的背景图片
+          } else
             this.$alert(this.$i18n.t(data.message))
         })
     if (this.$store.state.login)
       this.$store.commit('history') // 刷新浏览历史记录
+
   },
   methods: {
     addToCart: function () { // 添加购物车
@@ -99,6 +111,11 @@ export default {
             }
           })
     },
+    enhance: function (event) {
+      this.positionObject.left = (event.clientX + 50) + 'px'
+      this.positionObject.top = (event.clientY + 50) + 'px'
+      this.positionObject.backgroundPosition = `${-event.offsetX}px ${-event.offsetY}px`
+    },
   }
 }
 </script>
@@ -108,10 +125,18 @@ export default {
 
 .artwork-image {
   width: 100%;
-  height: 300px;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
+}
+
+.enhance-hover-box {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 .25rem rgba(95, 95, 95, .48);
+  background-size: 700px;
 }
 
 </style>
