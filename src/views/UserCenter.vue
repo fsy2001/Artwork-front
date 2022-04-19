@@ -260,6 +260,7 @@ export default {
           .then(data => {
             if (this.success) {
               this.$alert(this.$i18n.t('recharge-success'))
+              this.user.balance += this.rechargeValue
             } else {
               this.$alert(this.$i18n.t(data.message))
             }
@@ -268,8 +269,6 @@ export default {
             console.log(error)
             this.$alert(this.$i18n.t('network-error'))
           })
-      this.$store.commit('refresh') // 刷新用户信息
-      this.user = this.$store.state.user
     },
     fetchFriends: function () { // 获取好友列表
       fetch("/api/friend")
@@ -449,6 +448,10 @@ export default {
 
 .recharge-panel {
   width: 800px;
+}
+
+.artwork-card {
+  width: 95% !important;
 }
 
 
