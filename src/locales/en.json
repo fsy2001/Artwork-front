@@ -30,6 +30,7 @@
   "invalid-email": "invalid email",
   "conflict-username": "Conflict Username",
   "conflict-email": "Conflict email",
+  "info-incorrect": "Information incorrect",
 
   "captcha": "Captcha",
   "captcha-prompt": "input captcha",

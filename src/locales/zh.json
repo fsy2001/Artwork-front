@@ -34,6 +34,7 @@
   "invalid-email": "邮箱格式不正确",
   "conflict-username": "用户名冲突",
   "conflict-email": "邮箱冲突",
+  "info-incorrect": "表单填写不正确",
 
   "captcha": "验证码",
   "captcha-prompt": "请输入验证码",

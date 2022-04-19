@@ -61,10 +61,11 @@ export default {
         return
       }
 
-      if (this.captcha !== this.captchaRef) {
-        this.$alert(this.$i18n.t('wrong-captcha'))
-        return
-      }
+      // TODO: 交付时取消注释
+      // if (this.captcha !== this.captchaRef) {
+      //   this.$alert(this.$i18n.t('wrong-captcha'))
+      //   return
+      // }
 
       // 发送网络请求
       fetch('/api/login?' + new URLSearchParams({

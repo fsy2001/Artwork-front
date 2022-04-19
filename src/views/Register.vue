@@ -108,9 +108,9 @@ export default {
         ],
         email: [
           {
-            // TODO: 邮箱验证正则
             required: true,
             trigger: 'blur',
+            pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
             message: this.$i18n.t('invalid-email')
           }
         ]
@@ -137,9 +137,27 @@ export default {
       else
         return 'success'
     },
-    submit: function () {
-      // TODO: 检查是否填写完整
+    validate: function () { // 提交前检查表单内容
+      if (!/^[a-zA-Z0-9_-]+$/.test(this.form.username))
+        return false
 
+      if (this.form.password.length < 6 || this.form.password === this.form.username)
+        return false
+
+      if (this.form.password !== this.form.confirmPassword)
+        return false
+
+      if (!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.form.email))
+        return false
+
+      if (this.form.tel === '' || this.form.address === '')
+        return false
+
+      return this.form.address.length !== 0;
+    },
+    submit: function () {
+      if (!this.validate())
+        this.$alert(this.$i18n.t('info-incorrect'))
 
       let userObj = {
         username: this.form.username,
