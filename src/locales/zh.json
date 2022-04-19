@@ -35,6 +35,10 @@
   "conflict-username": "用户名冲突",
   "conflict-email": "邮箱冲突",
 
+  "captcha": "验证码",
+  "captcha-prompt": "请输入验证码",
+  "wrong-captcha": "验证码错误",
+
   "login-fail": "用户名或密码错误",
   "account-banned": "帐户被禁用",
   "unknown-error": "未知错误",

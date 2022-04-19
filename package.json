@@ -9,6 +9,7 @@
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
+    "captcha-mini": "^1.1.0",
     "core-js": "^3.6.5",
     "element-china-area-data": "^5.0.2",
     "element-ui": "^2.15.6",

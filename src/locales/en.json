@@ -30,6 +30,11 @@
   "invalid-email": "invalid email",
   "conflict-username": "Conflict Username",
   "conflict-email": "Conflict email",
+
+  "captcha": "Captcha",
+  "captcha-prompt": "input captcha",
+  "wrong-captcha": "Wrong captcha",
+
   "login-fail": "Incorrect username or password",
   "account-banned": "Account Banned",
   "unknown-error": "Unknown error",

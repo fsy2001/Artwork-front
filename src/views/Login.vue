@@ -13,17 +13,27 @@
         <el-form-item class="login-input" :label="$t('password')">
           <el-input v-model="password" :placeholder="$t('password-prompt')" show-password></el-input>
         </el-form-item>
-        <!--    TODO: 验证码    -->
+        <!--   验证码   -->
+        <el-form-item class="login-input" :label="$t('captcha')">
+          <el-input v-model="captcha" :placeholder="$t('captcha-prompt')"
+                    style="width: 150px; margin-right: 1em"></el-input>
+          <canvas width="80" height="30" id="captcha"></canvas>
+        </el-form-item>
         <el-form-item style="display: flex; justify-content: center">
           <el-button type="primary" @click="login">{{ $t('login') }}</el-button>
         </el-form-item>
       </el-form>
+
+      <div class="debug">
+        {{captchaRef}}, {{captcha}}
+      </div>
     </el-card>
   </div>
 </template>
 
 <script>
 import router from "@/router";
+import CaptchaMini from 'captcha-mini'
 
 export default {
   name: "Login",
@@ -31,13 +41,28 @@ export default {
     return {
       // TODO: 交付时删掉这个
       username: "fsy2001",
-      password: "password"
+      password: "password",
+      captcha: '',
+      captchaRef: '',
     }
+  },
+  mounted() {
+    let captcha = new CaptchaMini({
+      content: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    })
+    captcha.draw(document.querySelector('#captcha'), r => {
+      this.captchaRef = r
+    })
   },
   methods: {
     login: function () {
       if (this.username === "" || this.password === "") { // 检查是否填写完整
         this.$alert(this.$i18n.t('login-complete'))
+        return
+      }
+
+      if (this.captcha !== this.captchaRef) {
+        this.$alert(this.$i18n.t('wrong-captcha'))
         return
       }
 
@@ -79,5 +104,10 @@ export default {
 
 .login-input {
   width: 80%;
+}
+
+#captcha {
+  position: relative;
+  top: 10px;
 }
 </style>
