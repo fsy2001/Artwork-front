@@ -121,11 +121,6 @@
       </el-collapse>
     </el-card>
 
-    <!--  改头像面板  -->
-    <el-dialog :title="$t('edit-avatar')" :visible.sync="visible.avatar">
-      <!--  TODO: 改头像    -->
-    </el-dialog>
-
     <!--  充值面板  -->
     <el-dialog class="recharge-panel" :title="$t('recharge')" :visible.sync="visible.recharge">
       <el-form>
@@ -213,7 +208,6 @@ export default {
       messageTo: '',
       messageContent: '',
       visible: {
-        avatar: false,
         recharge: false,
         newFriends: false,
         friendApply: false,
@@ -454,6 +448,5 @@ export default {
 .artwork-card {
   width: 95% !important;
 }
-
 
 </style>

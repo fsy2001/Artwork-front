@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     getSocket: function () {
-      let socket = new WebSocket('ws://192.168.3.53/api/chat')
+      let socket = new WebSocket(`ws://${window.location.host}/api/chat`)
       socket.onopen = function (event) {
         console.log('connection opening')
         console.log(event)
