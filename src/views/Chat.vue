@@ -75,6 +75,9 @@ export default {
     }
 
     this.getSocket()
+  },
+  destroyed() {
+    this.socket.close()
   }
 
 }

@@ -23,10 +23,6 @@
           <el-button type="primary" @click="login">{{ $t('login') }}</el-button>
         </el-form-item>
       </el-form>
-
-      <div class="debug">
-        {{captchaRef}}, {{captcha}}
-      </div>
     </el-card>
   </div>
 </template>
@@ -39,9 +35,8 @@ export default {
   name: "Login",
   data() {
     return {
-      // TODO: 交付时删掉这个
-      username: "fsy2001",
-      password: "password",
+      username: '',
+      password: '',
       captcha: '',
       captchaRef: '',
     }
@@ -61,11 +56,10 @@ export default {
         return
       }
 
-      // TODO: 交付时取消注释
-      // if (this.captcha !== this.captchaRef) {
-      //   this.$alert(this.$i18n.t('wrong-captcha'))
-      //   return
-      // }
+      if (this.captcha !== this.captchaRef) {
+        this.$alert(this.$i18n.t('wrong-captcha'))
+        return
+      }
 
       // 发送网络请求
       fetch('/api/login?' + new URLSearchParams({
