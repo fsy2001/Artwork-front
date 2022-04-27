@@ -9,9 +9,9 @@
 
       <!--   用户名 & 头像   -->
       <el-row class="user-title" style="margin-bottom: 40px;">
-        <el-avatar :size="60" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"></el-avatar>
+        <el-avatar :size="60" :src="$store.state.user.img"></el-avatar>
         <span class="user-title-username"> {{ user.username }} </span>
-        <el-button @click="visible.avatar = true">{{ $t('edit-avatar') }}</el-button>
+        <Avatar/>
       </el-row>
 
       <!--  用户信息展示   -->
@@ -198,10 +198,11 @@ import Message from "@/components/Message";
 import OrderCard from "@/components/OrderCard";
 import ArtworkCard from "@/components/ArtworkCard";
 import router from "@/router";
+import Avatar from "@/components/Avatar";
 
 export default {
   name: "UserCenter",
-  components: {ArtworkCard, Message, OrderCard},
+  components: {ArtworkCard, Message, OrderCard, Avatar},
 
   data() {
     return {

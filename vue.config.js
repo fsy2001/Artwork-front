@@ -15,6 +15,10 @@ module.exports = {
         target: 'http://localhost:80/',
         changeOrigin: true
       },
+      '^/image': {
+        target: 'http://localhost:80/',
+        changeOrigin: true
+      },
     }
   }
 }
