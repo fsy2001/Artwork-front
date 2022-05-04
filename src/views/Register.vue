@@ -61,7 +61,7 @@ export default {
     let validatePassword = (rule, value, callback) => {
       if (value === this.form.username)
         callback(new Error(this.$i18n.t('password-conflict')))
-      else if (value.length < 6)
+      else if (value.length < 6 || /^[0-9]+$/.test(value))
         callback(new Error(this.$i18n.t('invalid-password')))
       else callback()
     }
