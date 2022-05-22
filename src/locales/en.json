@@ -107,9 +107,14 @@
   "recent-view": "Recent view",
   "canceled": "Canceled",
   "confirm-delivered": "Confirm delivered",
+  "delivering": "Delivering",
+  "payable": "Not paid",
   "confirmed": "Confirmed",
   "paid": "Paid",
 
   "require-login": "Require login",
-  "chatroom": "Chatroom"
+  "chatroom": "Chatroom",
+  "recent-message": "Recent Message",
+  "order-canceled": "Order canceled",
+  "refresh": "Refresh"
 }

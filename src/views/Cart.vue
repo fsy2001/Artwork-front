@@ -136,7 +136,6 @@ export default {
 
       await new Promise(r => setTimeout(r, 200)); // 等待
       this.$store.commit('cart') // 刷新购物车
-      this.$store.commit('order') // 刷新订单
     },
     showPanel: function () {
       if (this.$store.state.cart.length !== 0)

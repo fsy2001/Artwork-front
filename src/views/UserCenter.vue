@@ -11,6 +11,7 @@
       <el-row class="user-title" style="margin-bottom: 40px;">
         <el-avatar :size="60" :src="$store.state.user.img"></el-avatar>
         <span class="user-title-username"> {{ user.username }} </span>
+        <el-button @click="refresh" style="margin-right: 10px">{{ $t('refresh') }}</el-button>
         <Avatar/>
       </el-row>
 
@@ -83,11 +84,13 @@
                 </div>
               </template>
             </el-table-column>
+
+            <el-table-column :label="$t('recent-message')" prop="recentMessage"></el-table-column>
             <el-table-column align="right">
               <template slot="header">
-                <el-button @click="visible.newFriends = true" size="small">{{ $t('new-friends') }}</el-button>
+                <el-button @click="visible.newFriends = true" size="mini">{{ $t('new-friends') }}</el-button>
                 <el-button @click="visible.friendApply = true; fetchApplications()"
-                           size="small">{{ $t('friend-apply') }}
+                           size="mini">{{ $t('friend-apply') }}
                 </el-button>
               </template>
 
@@ -106,12 +109,7 @@
 
         <!--  我的订单   -->
         <el-collapse-item :title="$t('order')">
-          <OrderCard v-for="order in $store.state.orders" :key="order.id" :order="order">
-            <el-button v-if="order.status === 'paid'" @click="expandDetailPanel(order.id)" type="text"
-                       style="float: right">
-              <i class="el-icon-info"></i>
-            </el-button>
-          </OrderCard>
+          <OrderCard v-for="order in $store.state.orders" :key="order.id" :order="order"></OrderCard>
         </el-collapse-item>
 
         <!--  最近浏览  -->
@@ -125,7 +123,7 @@
     <el-dialog class="recharge-panel" :title="$t('recharge')" :visible.sync="visible.recharge">
       <el-form>
         <el-form-item :label="$t('recharge-amount')">
-          <el-input-number v-model="rechargeValue" controls-position="right" :min="1"></el-input-number>
+          <el-input v-model="rechargeValue" style="width: 100px"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer">
@@ -172,19 +170,7 @@
       </el-form>
     </el-dialog>
 
-    <!--  订单详情面板  -->
-    <el-dialog :title="$t('order-detail')" :visible.sync="visible.orderDetail">
-      <!--  时间线  -->
-      <el-timeline>
-        <el-timeline-item v-for="(step, index) in deliveryStatus"
-                          :key="index"
-                          :color="step.color">
-          {{ step.content }}
-        </el-timeline-item>
 
-      </el-timeline>
-      <el-button type="primary" @click="confirmDelivered">{{ $t('confirm-delivered') }}</el-button>
-    </el-dialog>
   </div>
 </template>
 
@@ -212,33 +198,24 @@ export default {
         newFriends: false,
         friendApply: false,
         message: false,
-        orderDetail: false
       },
       rechargeValue: 0,
       newFriendName: "",
     }
   },
-  computed: {
-    deliveryStatus: function () {
-      let step = this.$store.state.activeOrder.shippingStatus
-      let user = this.$store.state.user
-      let arr = [
-        {content: user.addressProvince},
-        {content: user.addressCity},
-        {content: user.addressDistrict},
-        {content: user.addressDetail}
-      ]
-
-      for (let i = 1; i <= 4; i++) {
-        if (i <= step)
-          arr[i - 1].color = '#0bbd87'
+  methods: {
+    refresh: function () { // 刷新信息
+      this.fetchFriends()
+      this.$store.commit('refresh')
+      this.$store.commit('order')
+      this.user = this.$store.state.user
+    },
+    recharge: function () { // 提交充值数据
+      if (!/^[0-9]+$/.test(this.rechargeValue)) {
+        this.$alert('请输入合法数字')
+        return
       }
 
-      return arr
-    }
-  },
-  methods: {
-    recharge: function () { // 提交充值数据
       fetch('/api/recharge?' + new URLSearchParams({
         val: this.rechargeValue
       }), {
@@ -255,7 +232,7 @@ export default {
           .then(data => {
             if (this.success) {
               this.$alert(this.$i18n.t('recharge-success'))
-              this.user.balance += this.rechargeValue
+              this.refresh()
             } else {
               this.$alert(this.$i18n.t(data.message))
             }
@@ -390,27 +367,6 @@ export default {
             this.$alert(this.$i18n.t('network-error'))
           })
     },
-    expandDetailPanel: function (id) {
-      this.$store.commit('active', id)
-      this.$emit('order-detail')
-      this.visible.orderDetail = true
-    },
-    confirmDelivered: function () {
-      let id = this.$store.state.activeOrderId
-
-      fetch('/api/order/confirm?' + new URLSearchParams({order: id}),
-          {method: 'POST'})
-          .then(res => {
-            this.success = res.ok
-            return res.json()
-          })
-          .then(data => {
-            if (this.success)
-              this.$alert(this.$t('confirmed'))
-            else
-              this.$alert(this.$t(data.message))
-          })
-    }
   },
   mounted() {
     if (!this.$store.state.login) {
@@ -421,6 +377,7 @@ export default {
 
     this.fetchFriends()
     this.$store.commit('refresh')
+    this.$store.commit('order')
   }
 }
 </script>

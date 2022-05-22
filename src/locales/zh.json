@@ -119,11 +119,17 @@
 
   "recent-view": "最近浏览",
   "canceled": "已取消",
+  "delivering": "正在送货",
+  "payable": "等待付款",
+
   "confirm-delivered": "确认送达",
   "confirmed": "已确认送达",
   "paid": "已付款",
 
   "require-login": "需要登录",
 
-  "chatroom": "在线聊天室"
+  "chatroom": "在线聊天室",
+  "recent-message": "最近消息",
+  "order-canceled": "订单已取消",
+  "refresh": "刷新"
 }

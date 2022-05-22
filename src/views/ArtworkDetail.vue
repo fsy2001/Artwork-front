@@ -10,7 +10,7 @@
       <el-image class="artwork-image" fit="cover" :src="artwork.imgPath"
                 @mouseenter="enhanceVisible = true"
                 @mousemove="enhance"
-                @mouseleave="enhanceVisible = false">
+                @mouseleave="enhanceVisible = true">
       </el-image>
 
       <!--   悬浮放大窗口   -->
